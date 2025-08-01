@@ -87,7 +87,6 @@ a = [[
 ]
 ]
 
-#################Checking column wise################
 
 def twist():
     global a,count
