@@ -1,0 +1,84 @@
+Objective
+
+The objective of Cobra is to solve a Sudoku puzzle by
+accepting the known numbers and their positions from the user and applying logical
+elimination based on subgrids, rows, and columns until the puzzle is fully solved.
+
+
+ Working Principle
+
+The logic of Cobra unfolds in multiple steps:
+
+
+1. Initialization
+
+Two multi-dimensional arrays are created:
+
+a. Sudoku Grid: Holds the numbers given by the user.
+
+b. Possibility Grid: For every blank cell, it starts with all numbers (1 to 9) as potential candidates.
+
+
+2. Subgrid-Based Possibility Elimination
+
+Each 3×3 subgrid is processed:
+
+All numbers already present in that subgrid are identified.
+
+These known numbers are removed from the list of possibilities for every blank cell in the same subgrid.
+
+If a blank cell ends up with only one possible value, that value is assigned to it.
+
+
+ 3. Row-Wise Possibility Elimination
+
+For each blank cell, the program:
+
+Identifies the row it belongs to.
+
+Collects all known values already present in that same row.
+
+Removes these values from the possibility list of the blank cell.
+
+If only one number remains, that number is placed in the cell.
+
+
+4. Column-Wise Elimination via Transpose
+
+To simplify column checking:
+
+The entire Sudoku grid is transposed (rows become columns).
+
+The same row-wise elimination logic is applied (which now acts column-wise).
+
+The grid is then transposed back to continue solving.
+
+
+ 5. Iterative Solving
+
+The above three steps — subgrid, row, and column elimination — are executed repeatedly in cycles.
+
+After each cycle:
+
+New values might get fixed in the grid, which further reduces possibilities.
+
+
+The process continues until all the cells are filled up.
+
+
+
+ Example Scenario
+
+Consider a blank cell with initial possible values [1–9]:
+
+1. Its subgrid contains 1, 3, 5 → eliminate → [2,4,6,7,8,9]
+
+
+2. Its row has 2, 6 → eliminate → [4,7,8,9]
+
+
+3. Its column has 4, 8 → eliminate → [7,9]
+
+
+
+If only one number remains in any of these steps, it becomes the final value for that cell.
